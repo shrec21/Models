@@ -24,7 +24,7 @@ def main():
     # negative R^2 you just saw.
     variants = {
         "Batch (full dataset)": (n_samples, 0.1),
-        "Mini-batch (size=64)": (64, 0.05),
+        "Mini-batch (size=64)": (64, 0.001),
         "Stochastic (size=1)": (1, 0.001),
     }
 
@@ -32,7 +32,7 @@ def main():
 
     for label, (batch_size, learning_rate) in variants.items():
         model = LinearRegressionScratch(
-            learning_rate=learning_rate, n_iterations=500, batch_size=batch_size
+            learning_rate=learning_rate, n_iterations=5000, batch_size=batch_size
         )
         model.fit(X_train, y_train)
         r2 = model.score(X_test, y_test)
